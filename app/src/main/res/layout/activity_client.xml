@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_server"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#302E2E"
+    android:padding="20dp">
+
+    <Button
+        android:id="@+id/btnConnectServer"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/button1"
+        android:onClick="onClick"
+        android:text="Connect to server"
+        android:textColor="#FFF9F9" />
+
+    <Button
+        android:id="@+id/PopUp"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/button1"
+        android:text="Wybierz aktywnosc"
+        android:onClick="showPopup"
+        android:textColor="#FFF9F9" />
+
+
+    <EditText
+        android:id="@+id/edMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PopUp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:hint="Tu wpisz wiadomosc do wyslania"
+        android:text="Tu wpisz adres serwera" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/send_data"
+        android:layout_below="@+id/edMessage">
+
+        <LinearLayout
+            android:id="@+id/msgList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/send_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button1"
+        android:onClick="onClick"
+        android:text="Send Message to server"
+        android:textColor="@android:color/white" />
+
+
+
+</RelativeLayout>

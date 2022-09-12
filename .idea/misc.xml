@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/MGPO/Desktop/Client Server/android-client-server-main/ClientApplication/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/MGPO/Desktop/Client Server/android-client-server-main/ClientApplication/app/src/main/res/drawable/button1.xml" value="0.1" />
+        <entry key="..\:/Users/MGPO/Desktop/Client Server/android-client-server-main/ClientApplication/app/src/main/res/drawable/button_pressed.xml" value="0.1" />
+        <entry key="..\:/Users/MGPO/Desktop/Client Server/android-client-server-main/ClientApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/MGPO/Desktop/Client Server/android-client-server-main/ClientApplication/app/src/main/res/layout/._activity_client.xml" value="0.12335359675785208" />
+        <entry key="..\:/Users/MGPO/Desktop/Client Server/android-client-server-main/ClientApplication/app/src/main/res/layout/activity_client.xml" value="0.2" />
+        <entry key="..\:/Users/MGPO/Desktop/Client Server/android-client-server-main/ClientApplication/app/src/main/res/menu/popup_menu.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/layout/activity_client.xml" value="0.11980749746707194" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android API 21 Platform" project-jdk-type="Android SDK" />
+</project>
