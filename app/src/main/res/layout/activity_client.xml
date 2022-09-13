@@ -7,6 +7,18 @@
     android:background="#302E2E"
     android:padding="20dp">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        android:layout_gravity="top"
+        android:gravity="center"
+        android:layout_centerVertical="true">
+
+    </LinearLayout>
+
     <EditText
         android:id="@+id/Long"
         android:layout_width="match_parent"
@@ -45,8 +57,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:background="@drawable/button1"
-        android:text="Wybierz aktywnosc"
         android:onClick="showPopup"
+        android:text="Wybierz aktywnosc"
         android:textColor="#FFF9F9" />
 
 
@@ -82,7 +94,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="169dp"
+        android:layout_marginBottom="201dp"
         android:background="@drawable/button1"
         android:onClick="onClick"
         android:text="Send Message to server"
