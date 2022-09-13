@@ -5,7 +5,7 @@
     <item android:id="@+id/item2"
         android:title="Dodaj samolot szturmowy"/>
     <item android:id="@+id/item3"
-        android:title="Ustal punkt na lat 30 lon 20( to do)"/>
+        android:title="Ustal punkt na lat 30 lon 20"/>
     <item android:id="@+id/item4"
         android:title="Item4"/>
     <item android:id="@+id/item5"

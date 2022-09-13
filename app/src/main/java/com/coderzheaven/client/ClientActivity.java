@@ -125,6 +125,21 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                 clientThread.sendMessage(clientMessage);
             }
         }
+
+        if(view.getId() == R.id.send_data2){
+            TextView lat = findViewById(R.id.Lat);
+            TextView lonng = findViewById(R.id.Long);
+
+            String LaT = lat.getText().toString();
+            String LoNg = lonng.getText().toString();
+            String Message = "1-EFlag-"+LaT+"-"+LoNg+"-"+"0";
+            edMessage.setText(Message);
+            String clientMessage = edMessage.getText().toString().trim();
+            if (null != clientThread) {
+                clientThread.sendMessage(clientMessage);
+            }
+            edMessage.setText("");
+        }
     }
 
     public void  showPopup(View view){

@@ -7,6 +7,26 @@
     android:background="#302E2E"
     android:padding="20dp">
 
+    <EditText
+        android:id="@+id/Long"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PopUp"
+        android:layout_marginTop="524dp"
+        android:layout_marginBottom="5dp"
+        android:hint="Tu wpisz długość geograficzną"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/Lat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PopUp"
+        android:layout_marginTop="476dp"
+        android:layout_marginBottom="5dp"
+        android:hint="tu wpisz szerokosc geograficzna"
+        android:text="" />
+
     <Button
         android:id="@+id/btnConnectServer"
         android:layout_width="240dp"
@@ -41,10 +61,12 @@
         android:text="Tu wpisz adres serwera" />
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="372dp"
+        android:layout_height="346dp"
         android:layout_above="@+id/send_data"
-        android:layout_below="@+id/edMessage">
+        android:layout_below="@+id/edMessage"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="16dp">
 
         <LinearLayout
             android:id="@+id/msgList"
@@ -60,11 +82,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="169dp"
         android:background="@drawable/button1"
         android:onClick="onClick"
         android:text="Send Message to server"
         android:textColor="@android:color/white" />
 
+    <Button
+        android:id="@+id/send_data2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="11dp"
+        android:background="@drawable/button1"
+        android:onClick="onClick"
+        android:text="Ustaw znacznik przeciwnika"
+        android:textColor="@android:color/white" />
 
 
 </RelativeLayout>
