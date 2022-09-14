@@ -9,7 +9,10 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.coderzheaven.client.ClientActivity"
+            android:name=".apiConnect"
+            android:exported="false" />
+        <activity
+            android:name=".ClientActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

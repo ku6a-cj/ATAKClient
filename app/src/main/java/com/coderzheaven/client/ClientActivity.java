@@ -1,5 +1,6 @@
 package com.coderzheaven.client;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -127,8 +128,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         if(view.getId() == R.id.send_data2){
-            TextView lat = findViewById(R.id.Lat);
-            TextView lonng = findViewById(R.id.Long);
+            TextView lat = findViewById(R.id.Lat);            TextView lonng = findViewById(R.id.Long);
 
             String LaT = lat.getText().toString();
             String LoNg = lonng.getText().toString();
@@ -183,7 +183,8 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                 edMessage.setText("");
                 return true;
             case R.id.item4:
-                Toast.makeText(this, "Wybrano aktywnosc 4",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Wybrano przejdz do polaczenia API",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(ClientActivity.this, apiConnect.class));
                 return true;
             case R.id.item5:
                 Toast.makeText(this, "Wybrano aktywnosc 5",Toast.LENGTH_SHORT).show();

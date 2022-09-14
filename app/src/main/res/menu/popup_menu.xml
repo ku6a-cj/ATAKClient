@@ -7,7 +7,7 @@
     <item android:id="@+id/item3"
         android:title="Ustal punkt na lat 30 lon 20"/>
     <item android:id="@+id/item4"
-        android:title="Item4"/>
+        android:title="Przejdz do polaczenia API"/>
     <item android:id="@+id/item5"
         android:title="Item5"/>
 </menu>
