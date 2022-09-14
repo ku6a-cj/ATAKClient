@@ -112,7 +112,15 @@ private TextView responseTV;
 
                 // on below line we are getting our data from modal class
                 // and adding it to our string.
-                String responseString = "Response Code : " + response.code() + "\nid : " + responseFromAPI.getid() + "\n" + "title : " + responseFromAPI.getTitle()+"\n" + "lat : " + responseFromAPI.getlat()+"\n" + "lon : " + responseFromAPI.getlon();
+                String responsee= " ";
+                if (response.code()==200)
+                {
+                    responsee="request has succeeded";
+                }else{
+                    responsee="request failed";
+                }
+
+                String responseString = "Response Code : " + response.code()+ " "+ responsee + "\nid : " + responseFromAPI.getid() + "\n" + "title : " + responseFromAPI.getTitle()+"\n" + "lat : " + responseFromAPI.getlat()+"\n" + "lon : " + responseFromAPI.getlon();
 
                 // below line we are setting our string to our text view.
                 responseTV.setText(responseString);
