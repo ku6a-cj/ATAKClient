@@ -1,10 +1,14 @@
 package com.coderzheaven.client;
 
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -14,9 +18,13 @@ import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -44,7 +52,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
     private Handler handler;
     private int clientTextColor;
     private EditText edMessage;
-
+    private FusedLocationProviderClient client;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -187,11 +195,37 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(new Intent(ClientActivity.this, apiConnect.class));
                 return true;
             case R.id.item5:
-                Toast.makeText(this, "Wybrano aktywnosc 5",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Wybrano umiesc znacznik w mojej lokalizacji",Toast.LENGTH_SHORT).show();
+                client = LocationServices.getFusedLocationProviderClient(this);
+                requestPermission();
+                if (ActivityCompat.checkSelfPermission(ClientActivity.this, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                    Log.e("nie masz uparawnien GPS", "bark uprawnien");
+                }
+                client.getLastLocation().addOnSuccessListener(ClientActivity.this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if (location != null) {
+                            Log.e("Element 1", String.valueOf(location.getLatitude()));
+                            Log.e("Element 2", String.valueOf(location.getLongitude()));
+                            String MyMessageGPS= "1-Flag-"+String.valueOf(location.getLatitude())+"-"+String.valueOf(location.getLongitude())+"-0";
+                            edMessage.setText(MyMessageGPS);
+                            String clientMessage2 = edMessage.getText().toString().trim();
+                            //showMessage(clientMessage, Color.BLUE);
+                            if (null != clientThread) {
+                                clientThread.sendMessage(clientMessage2);
+                            }
+                            edMessage.setText("");
+                           // Log.e("My location",location.toString());
+                        }
+                    }
+                });
                 return true;
             default:
                 return false;
         }
+    }
+    private void requestPermission(){
+        ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION}, 1);
     }
 
     class ClientThread implements Runnable {

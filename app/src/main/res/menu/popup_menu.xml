@@ -9,5 +9,5 @@
     <item android:id="@+id/item4"
         android:title="Przejdz do polaczenia API"/>
     <item android:id="@+id/item5"
-        android:title="Item5"/>
+        android:title="Umiesc znacznik w mojej lokalizacji"/>
 </menu>
