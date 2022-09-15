@@ -121,7 +121,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             clientThread = new ClientThread();
             thread = new Thread(clientThread);
             thread.start();
-            showMessage("Connected to Server...", clientTextColor);
+           // showMessage("Connected to Server...", clientTextColor);
             hideConnectServerBtn();
             showPopUPbtn();
             edMessage.setText("");
