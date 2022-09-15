@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.InputType;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -63,7 +64,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         handler = new Handler();
         msgList = findViewById(R.id.msgList);
         edMessage = findViewById(R.id.edMessage);
-        edMessage.setText("Tu wpisz IP serwera np. "+SERVER_IP);
+        edMessage.setHint("Tu wpisz IP serwer np."+ "\""  +SERVER_IP + "\"");
     }
 
 
@@ -124,6 +125,8 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             hideConnectServerBtn();
             showPopUPbtn();
             edMessage.setText("");
+            edMessage.setHint("Tu wpisz wiadomosc do wysłania");
+            edMessage.setInputType(InputType.TYPE_CLASS_TEXT);
             return;
         }
 
@@ -136,16 +139,35 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         }
 
         if(view.getId() == R.id.send_data2){
-            TextView lat = findViewById(R.id.Lat);            TextView lonng = findViewById(R.id.Long);
-
+            TextView lat = findViewById(R.id.Lat);
+            TextView lonng = findViewById(R.id.Long);
+            String isW = "0";
+            String isS = "0";
             String LaT = lat.getText().toString();
             String LoNg = lonng.getText().toString();
-            String Message = "1-EFlag-"+LaT+"-"+LoNg+"-"+"0";
-            edMessage.setText(Message);
-            String clientMessage = edMessage.getText().toString().trim();
-            if (null != clientThread) {
-                clientThread.sendMessage(clientMessage);
+            if(LaT.isEmpty() || LoNg.isEmpty()){
+                Toast.makeText(this, "Nie wpisano tekstu do przeslania, uzupełnij pola tekstowe!",Toast.LENGTH_SHORT).show();
+            }else if(Integer.parseInt(LaT)<=90 && Integer.parseInt(LaT)>=-90 && Integer.parseInt(LoNg)>=-180 && Integer.parseInt(LoNg)<=180 ){
+                if (Integer.parseInt(LaT)<0 ){
+                    isS="1";
+                    LaT = String.valueOf(Integer.parseInt(LaT)*-1);
+                }
+
+                if (Integer.parseInt(LoNg)<0 ){
+                    isW="1";
+                    LoNg = String.valueOf(Integer.parseInt(LoNg)*-1);
+                }
+                String Message = "1-EFlag-"+LaT+"-"+LoNg+"-"+isS+"-"+isW;
+                edMessage.setText(Message);
+                String clientMessage = edMessage.getText().toString().trim();
+                showMessage(clientMessage, Color.BLUE);
+                if (null != clientThread) {
+                    clientThread.sendMessage(clientMessage);
+                }
+            }else{
+                Toast.makeText(this, "Podales wartosc spoza przedzialu!",Toast.LENGTH_SHORT).show();
             }
+
             edMessage.setText("");
         }
     }

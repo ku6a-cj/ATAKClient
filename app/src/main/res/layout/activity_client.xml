@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-
         android:layout_gravity="top"
         android:gravity="center"
         android:layout_centerVertical="true">
@@ -27,7 +26,9 @@
         android:layout_alignTop="@+id/Lat"
         android:layout_marginTop="57dp"
         android:layout_marginBottom="30dp"
-        android:hint="Tu wpisz długość geograficzną"
+        android:inputType="numberDecimal"
+        android:digits="0123456789-"
+        android:hint="Tu wpisz długość geograficzną W/E"
         android:text="" />
 
     <EditText
@@ -37,7 +38,9 @@
         android:layout_alignTop="@+id/send_data"
         android:layout_marginTop="58dp"
         android:layout_marginBottom="5dp"
-        android:hint="tu wpisz szerokosc geograficzna"
+        android:inputType="numberDecimal"
+        android:digits="0123456789-"
+        android:hint="Tu wpisz szerokosc geograficzna N/S"
         android:text="" />
 
     <Button
@@ -71,7 +74,9 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
         android:hint="Tu wpisz wiadomosc do wyslania"
-        android:text="Tu wpisz adres serwera" />
+        android:inputType="numberDecimal"
+        android:digits="0123456789."
+        android:text="" />
 
     <ScrollView
         android:layout_width="372dp"
