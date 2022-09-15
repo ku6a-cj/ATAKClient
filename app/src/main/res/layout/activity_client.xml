@@ -20,15 +20,15 @@
 
     <EditText
         android:id="@+id/Long"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="378dp"
+        android:layout_height="43dp"
         android:layout_above="@+id/send_data2"
         android:layout_alignTop="@+id/Lat"
-        android:layout_marginTop="57dp"
-        android:layout_marginBottom="30dp"
-        android:inputType="numberDecimal"
+        android:layout_marginTop="46dp"
+        android:layout_marginBottom="12dp"
         android:digits="0123456789-"
         android:hint="Tu wpisz długość geograficzną W/E"
+        android:inputType="numberDecimal"
         android:text="" />
 
     <EditText
@@ -38,9 +38,9 @@
         android:layout_alignTop="@+id/send_data"
         android:layout_marginTop="58dp"
         android:layout_marginBottom="5dp"
-        android:inputType="numberDecimal"
         android:digits="0123456789-"
         android:hint="Tu wpisz szerokosc geograficzna N/S"
+        android:inputType="numberDecimal"
         android:text="" />
 
     <Button
@@ -73,9 +73,9 @@
         android:layout_below="@+id/PopUp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
+        android:digits="0123456789."
         android:hint="Tu wpisz wiadomosc do wyslania"
         android:inputType="numberDecimal"
-        android:digits="0123456789."
         android:text="" />
 
     <ScrollView
@@ -100,7 +100,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/send_data2"
-        android:layout_marginBottom="142dp"
+        android:layout_marginBottom="110dp"
         android:background="@drawable/button1"
         android:onClick="onClick"
         android:text="Send Message to server"
@@ -111,10 +111,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="11dp"
+        android:layout_marginBottom="70dp"
         android:background="@drawable/button1"
         android:onClick="onClick"
         android:text="Ustaw znacznik przeciwnika"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/buttonAlly"
+        android:layout_width="372dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/Long"
+        android:layout_marginTop="124dp"
+        android:layout_marginBottom="0dp"
+        android:onClick="onClick"
+        android:background="@drawable/button1"
+        android:text="Ustaw znacznik sojusznika"
         android:textColor="@android:color/white" />
 
 

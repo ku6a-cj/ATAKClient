@@ -181,7 +181,40 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                 String Message = "1-EFlag-"+LaT+"-"+LoNg+"-"+isS+"-"+isW;
                 edMessage.setText(Message);
                 String clientMessage = edMessage.getText().toString().trim();
-                showMessage(clientMessage, Color.BLUE);
+               // showMessage(clientMessage, Color.BLUE);
+                if (null != clientThread) {
+                    clientThread.sendMessage(clientMessage);
+                }
+            }else{
+                Toast.makeText(this, "Podales wartosc spoza przedzialu!",Toast.LENGTH_SHORT).show();
+            }
+
+            edMessage.setText("");
+        }
+
+        if(view.getId() == R.id.buttonAlly){
+            TextView lat = findViewById(R.id.Lat);
+            TextView lonng = findViewById(R.id.Long);
+            String isW = "0";
+            String isS = "0";
+            String LaT = lat.getText().toString();
+            String LoNg = lonng.getText().toString();
+            if(LaT.isEmpty() || LoNg.isEmpty()){
+                Toast.makeText(this, "Nie wpisano tekstu do przeslania, uzupełnij pola tekstowe!",Toast.LENGTH_SHORT).show();
+            }else if(Integer.parseInt(LaT)<=90 && Integer.parseInt(LaT)>=-90 && Integer.parseInt(LoNg)>=-180 && Integer.parseInt(LoNg)<=180 ){
+                if (Integer.parseInt(LaT)<0 ){
+                    isS="1";
+                    LaT = String.valueOf(Integer.parseInt(LaT)*-1);
+                }
+
+                if (Integer.parseInt(LoNg)<0 ){
+                    isW="1";
+                    LoNg = String.valueOf(Integer.parseInt(LoNg)*-1);
+                }
+                String Message = "1-Flag-"+LaT+"-"+LoNg+"-"+isS+"-"+isW;
+                edMessage.setText(Message);
+                String clientMessage = edMessage.getText().toString().trim();
+                //showMessage(clientMessage, Color.BLUE);
                 if (null != clientThread) {
                     clientThread.sendMessage(clientMessage);
                 }
@@ -225,7 +258,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                 return true;
             case R.id.item3:
                 Toast.makeText(this, "Ustaw punkt na lat 30 lon 20",Toast.LENGTH_SHORT).show();
-                edMessage.setText("1-Flag-20-30-0");
+                edMessage.setText("1-Flag-20-30-0-0");
                 String clientMessage2 = edMessage.getText().toString().trim();
                 //showMessage(clientMessage, Color.BLUE);
                 if (null != clientThread) {
