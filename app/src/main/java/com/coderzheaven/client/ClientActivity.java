@@ -48,6 +48,8 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
     // Make sure you have the devices in same WiFi if testing locally
     // Or Make sure the port specified is open for connections.
     public String SERVER_IP = "192.168.137.11";
+    public int AllyCounter;
+    public int EnemyCounter;
     private ClientThread clientThread;
     private Thread thread;
     private LinearLayout msgList;
@@ -55,11 +57,14 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
     private int clientTextColor;
     private EditText edMessage;
     private FusedLocationProviderClient client;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
        hidePopUPbtn();
+       AllyCounter = 0;
+       EnemyCounter = 0;
         setTitle("ATAKMessanger");
         clientTextColor = ContextCompat.getColor(this, R.color.green);
         handler = new Handler();
@@ -190,6 +195,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             }
 
             edMessage.setText("");
+            EnemyCounter=EnemyCounter+1;
         }
 
         if(view.getId() == R.id.buttonAlly){
@@ -223,6 +229,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             }
 
             edMessage.setText("");
+            AllyCounter=AllyCounter+1;
         }
     }
 
@@ -265,6 +272,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                     clientThread.sendMessage(clientMessage2);
                 }
                 edMessage.setText("");
+                AllyCounter = AllyCounter +1;
                 return true;
             case R.id.item4:
                 Toast.makeText(this, "Wybrano przejdz do polaczenia API",Toast.LENGTH_SHORT).show();
