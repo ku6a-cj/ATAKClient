@@ -13,12 +13,15 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".InstrukcjaOblugi"
+            android:exported="false" />
+        <activity
             android:name=".apiConnect"
             android:exported="false" />
         <activity
-            android:windowSoftInputMode="adjustPan"
             android:name=".ClientActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

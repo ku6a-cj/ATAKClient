@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -65,8 +66,28 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
         msgList = findViewById(R.id.msgList);
         edMessage = findViewById(R.id.edMessage);
         edMessage.setHint("Tu wpisz IP serwer np."+ "\""  +SERVER_IP + "\"");
+
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                startSettings();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void startSettings(){
+        startActivity(new Intent(ClientActivity.this, InstrukcjaOblugi.class));
+    }
 
     //ta funcjkacja dziala wewnatrz przez co nie mg modyfikowac czasu jaki wysylam a sluzy jedynie do wyswietlania
     public TextView textView(String message, int color) {
