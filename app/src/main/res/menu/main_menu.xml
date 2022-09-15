@@ -7,4 +7,14 @@
         app:showAsAction="never"
         android:title="Instrukcja obslugi">
     </item>
+    <item
+        android:id="@+id/changePosition"
+        app:showAsAction="never"
+        android:title="Zmien pozycje punktu">
+    </item>
+    <item
+        android:id="@+id/backToPreviousLayout"
+        app:showAsAction="never"
+        android:title="Umiesc punkt/Chat">
+    </item>
 </menu>

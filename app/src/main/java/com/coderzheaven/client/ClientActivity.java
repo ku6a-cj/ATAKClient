@@ -57,6 +57,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
     private int clientTextColor;
     private EditText edMessage;
     private FusedLocationProviderClient client;
+    public boolean changedTemplate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
        hidePopUPbtn();
        AllyCounter = 0;
        EnemyCounter = 0;
+       changedTemplate = false;
         setTitle("ATAKMessanger");
         clientTextColor = ContextCompat.getColor(this, R.color.green);
         handler = new Handler();
@@ -85,9 +87,33 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.action_settings:
                 startSettings();
                 return true;
+            case R.id.changePosition:
+                changeTemplateOnNewPosition();
+                changedTemplate = true;
+                return true;
+            case R.id.backToPreviousLayout:
+                backToPreviousLayout();
+                changedTemplate = false;
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void backToPreviousLayout() {
+        edMessage.setHint("Tu wpisz wiadomosc do wyslania");
+        Button setAlly = findViewById(R.id.buttonAlly);
+        Button setEnemy= findViewById(R.id.send_data2);
+        setAlly.setText("Ustaw znacznik sojusznika");
+        setEnemy.setText("Ustaw znacznik przeciwnika");
+    }
+
+    private void changeTemplateOnNewPosition() {
+        edMessage.setHint("Tu wpisz id punktu do zmiany");
+        Button setAlly = findViewById(R.id.buttonAlly);
+        Button setEnemy= findViewById(R.id.send_data2);
+        setAlly.setText("Zmien połozenie sojusznika");
+        setEnemy.setText("Zmien połozenie przeciwnika");
     }
 
     public void startSettings(){
@@ -183,10 +209,25 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                     isW="1";
                     LoNg = String.valueOf(Integer.parseInt(LoNg)*-1);
                 }
-                String Message = "1-EFlag-"+LaT+"-"+LoNg+"-"+isS+"-"+isW;
+                String Message = "1-EFlag-"+LaT+"-"+LoNg+"-"+isS+"-"+isW+"-0";
+                if(changedTemplate){
+                    TextView edMessage = findViewById(R.id.edMessage);
+                    String id = edMessage.getText().toString();
+                    if(id.isEmpty()){
+                        Toast.makeText(this, "Nie podales wartosci ID, wiec ustawiono na 0!",Toast.LENGTH_SHORT).show();
+                        id="0";
+                    }
+                    edMessage.setText("");
+                    if(Integer.parseInt(id)>EnemyCounter){
+                        Toast.makeText(this, "Podales wartosc spoza przedzialu!",Toast.LENGTH_SHORT).show();
+                        Message = "Uzytkownik podal bledne dane";
+                    }else{
+                    Message = "2-EFlag-"+LaT+"-"+LoNg+"-"+isS+"-"+isW+"-"+id;
+                    }
+                }
                 edMessage.setText(Message);
                 String clientMessage = edMessage.getText().toString().trim();
-               // showMessage(clientMessage, Color.BLUE);
+                showMessage(clientMessage, Color.BLUE);
                 if (null != clientThread) {
                     clientThread.sendMessage(clientMessage);
                 }
@@ -195,7 +236,10 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             }
 
             edMessage.setText("");
-            EnemyCounter=EnemyCounter+1;
+            if(changedTemplate){}else{
+                EnemyCounter=EnemyCounter+1;
+            }
+
         }
 
         if(view.getId() == R.id.buttonAlly){
@@ -217,10 +261,25 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
                     isW="1";
                     LoNg = String.valueOf(Integer.parseInt(LoNg)*-1);
                 }
-                String Message = "1-Flag-"+LaT+"-"+LoNg+"-"+isS+"-"+isW;
+                String Message = "1-Flag-"+LaT+"-"+LoNg+"-"+isS+"-"+isW+"-0";
+                if(changedTemplate){
+                    TextView edMessage = findViewById(R.id.edMessage);
+                    String id = edMessage.getText().toString();
+                    if(id.isEmpty()){
+                        Toast.makeText(this, "Nie podales wartosci ID, wiec ustawiono na 0!",Toast.LENGTH_SHORT).show();
+                        id="0";
+                    }
+                    edMessage.setText("");
+                    if(Integer.parseInt(id)>AllyCounter){
+                        Toast.makeText(this, "Podales wartosc spoza przedzialu!",Toast.LENGTH_SHORT).show();
+                        Message = "Uzytkownik podal bledne dane";
+                    }else{
+                        Message = "2-Flag-"+LaT+"-"+LoNg+"-"+isS+"-"+isW+"-"+id;
+                    }
+                }
                 edMessage.setText(Message);
                 String clientMessage = edMessage.getText().toString().trim();
-                //showMessage(clientMessage, Color.BLUE);
+                showMessage(clientMessage, Color.BLUE);
                 if (null != clientThread) {
                     clientThread.sendMessage(clientMessage);
                 }
@@ -229,7 +288,9 @@ public class ClientActivity extends AppCompatActivity implements View.OnClickLis
             }
 
             edMessage.setText("");
-            AllyCounter=AllyCounter+1;
+            if(changedTemplate){}else {
+                AllyCounter = AllyCounter + 1;
+            }
         }
     }
 
